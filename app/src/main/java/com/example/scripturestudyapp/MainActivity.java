@@ -20,5 +20,5 @@ public class MainActivity extends AppCompatActivity {
 
     //Dance team led by Cody Lillywhite
 
-    //MY DANCE TEAM IS BETTER!!!!
+    //This is the better line!
 }
