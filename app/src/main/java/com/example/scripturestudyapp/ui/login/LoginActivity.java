@@ -23,7 +23,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.scripturestudyapp.MainActivity;
+import com.example.scripturestudyapp.MainPage;
 import com.example.scripturestudyapp.R;
 import com.example.scripturestudyapp.ui.login.LoginViewModel;
 import com.example.scripturestudyapp.ui.login.LoginViewModelFactory;
@@ -124,14 +124,9 @@ public class LoginActivity extends AppCompatActivity {
     private void updateUiWithUser(LoggedInUserView model) {
         String welcome = getString(R.string.welcome) + model.getDisplayName();
         // TODO : initiate successful logged in experience
-        //Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
-        Intent intent = new Intent(this, MainActivity.class);
-        //EditText editText = (EditText) findViewById(R.id.editText);
-        //String message = editText.getText().toString();
-        //intent.putExtra(EXTRA_MESSAGE, message);
+        Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(this, MainPage.class);
         startActivity(intent);
-
-
     }
 
     private void showLoginFailed(@StringRes Integer errorString) {
