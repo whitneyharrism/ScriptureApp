@@ -7,7 +7,7 @@
     tools:context=".MainPage">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/reading_Tracker_button"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="103dp"
@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/notification_button"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -26,6 +26,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/reading_Tracker_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

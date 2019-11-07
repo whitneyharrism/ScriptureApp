@@ -11,4 +11,8 @@
     <string name="login_failed">"Login failed"</string>
     <string name="quiz_text">Progress Quiz</string>
     <string name="lesson_prep">Lesson Prep</string>
+    <string name="reading_Tracker_button">Reading Tracker</string>
+    <string name="your_Goals_button">Your Goals</string>
+    <string name="notification_button">Notification</string>
+    <string name="welcome_profile_textView">Welcome back!</string>
 </resources>

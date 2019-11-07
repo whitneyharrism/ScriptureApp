@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Profile">
+
+    <Button
+        android:id="@+id/notification_button"
+        android:layout_width="201dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="35dp"
+        android:text="Notifications"
+        app:layout_constraintEnd_toEndOf="@+id/reading_Tracker_button"
+        app:layout_constraintStart_toStartOf="@+id/reading_Tracker_button"
+        app:layout_constraintTop_toBottomOf="@+id/reading_Tracker_button" />
+
+    <Button
+        android:id="@+id/goals_button"
+        android:layout_width="201dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="384dp"
+        android:text="Your goals"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/notification_button"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/notification_button" />
+
+    <TextView
+        android:id="@+id/welcome_textView"
+        android:layout_width="327dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/reading_Tracker_button"
+        android:layout_width="201dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="63dp"
+        android:text="@string/reading_Tracker_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcome_textView" />
+</androidx.constraintlayout.widget.ConstraintLayout>
