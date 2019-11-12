@@ -21,4 +21,12 @@ public class MainPage extends AppCompatActivity {
         Intent intent = new Intent(this, LessonPage.class);
         startActivity(intent);
     }
+    public void goToProfile(View view){
+        Intent intent = new Intent(this, Profile.class);
+        startActivity(intent);
+    }
+    public void goToReadingTracker(View view){
+        Intent intent = new Intent(this, ReadingTracker.class);
+        startActivity(intent);
+    }
 }
