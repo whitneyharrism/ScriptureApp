@@ -103,4 +103,6 @@
     </string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_lesson_page">Lesson Page</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="create_account">Create a account</string>
 </resources>
