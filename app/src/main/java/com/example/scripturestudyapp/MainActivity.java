@@ -13,17 +13,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    //Test comment
 
-    //Cadens Test
-
-    //Team Test
-
-    //Dance team led by Cody Lillywhite
-
-    //This is the better line!
-
-
-
-    }
+}
 

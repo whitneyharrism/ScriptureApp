@@ -12,6 +12,9 @@ import android.view.View;
 
 public class LessonPage extends AppCompatActivity {
 
+    private String note[];
+    private String link[];
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,5 +31,11 @@ public class LessonPage extends AppCompatActivity {
             }
         });
     }
+
+    public void addNote(){}
+
+    public void addLink(){}
+
+    public void save(){}
 
 }

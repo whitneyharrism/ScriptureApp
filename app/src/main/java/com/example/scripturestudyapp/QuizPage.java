@@ -12,6 +12,8 @@ import android.view.View;
 
 public class QuizPage extends AppCompatActivity {
 
+    private String questions[];
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,4 +30,10 @@ public class QuizPage extends AppCompatActivity {
             }
         });
     }
+
+    public void submit(){}
+
+    public void setQuestion(Question q){}
+
+    public void saveProgress(){}
 }
