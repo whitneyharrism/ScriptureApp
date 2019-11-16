@@ -12,6 +12,7 @@ import android.view.View;
 
 public class QuizPage extends AppCompatActivity {
 
+    int score;
     private String questions[];
 
     @Override
