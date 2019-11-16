@@ -1,11 +1,14 @@
 package com.example.scripturestudyapp;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.util.Log;
 
-public class Notification {
+public class PopNotification extends AppCompatActivity {
 
     private static final String TAG = "My notification";
     String message;
@@ -17,18 +20,25 @@ public class Notification {
     //NotificationManager notificationManager =
     //    (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_notifications);
 
-    public boolean isMute(Context c){
-        boolean mute = false;
-        SharedPreferences pref = c.getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
-        SharedPreferences.Editor editor = pref.edit();
-        editor.putBoolean("mute", true);
-        editor.commit();
-
-        boolean newMute = pref.getBoolean("mute", false);
-
-        return newMute;
     }
+
+//    public void isMute(){
+//        boolean mute = false;
+//        Context context;
+//        SharedPreferences pref = this.getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
+//        SharedPreferences.Editor editor = pref.edit();
+//        editor.putBoolean("mute", true);
+//        editor.commit();
+//
+//        boolean newMute = pref.getBoolean("mute", false);
+//
+//        Log.i(TAG, "isMute: " + newMute);
+//    }
 
     public void sendNotification(String message){
 
