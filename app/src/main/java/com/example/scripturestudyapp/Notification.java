@@ -48,20 +48,20 @@ public class Notification {
     }
 
     public void sendNotification(NotificationCompat.Builder builder){
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+        //NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
 
 // notificationId is a unique int for each notification that you must define
-        notificationManager.notify(channelId, builder.build());
+        //notificationManager.notify(channelId, builder.build());
     }
     public void setNotification(String message){
-        NotificationManagerCompat.notify(channelId, builder.build())
+//        NotificationManagerCompat.notify(channelId, builder.build())
     }
     public void createNotification(Context context){
-    NotificationCompat.Builder builder = new NotificationCompat.Builder(context, channelId)
-            .setSmallIcon(res.drawable.iconBell)
-            .setContentTitle(title)
-            .setContentText(message)
-            .setPriority(importance);
+//    NotificationCompat.Builder builder = new NotificationCompat.Builder(context, channelId)
+//            .setSmallIcon(res.drawable.iconBell)
+//            .setContentTitle(title)
+//            .setContentText(message)
+//            .setPriority(importance);
     }
     public void setChannel(String channelId, CharSequence channelName, int importance)
     {
@@ -70,9 +70,11 @@ public class Notification {
     public void setTime(int hour, int min, Context context){
         Calendar calendar = Calendar.getInstance();
         Intent intent = new Intent(context, Notification.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context,100,intent,PendingIntent.FLAG_UPDATE_CURRENT)
-        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context,100,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+        //AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        //alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
     }
-    public void remove(){cancel(channelName, channelId);}
+    public void remove(){
+//        cancel(channelName, channelId);
+    }
 }

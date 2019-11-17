@@ -1,4 +1,4 @@
-package com.example.scripturestudyapp.ui.login;
+package com.example.scripturestudyapp;
 
 public class KnowledgeModel {
     int bomScore;
