@@ -2,16 +2,28 @@ package com.example.scripturestudyapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 public class MainPage extends AppCompatActivity {
+
+    private static final String TAG = "My notification";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
+        Context context;
+        Notification n = new Notification();
+        boolean mute = n.isMute(this);
+
+        Log.i(TAG, "isMute: " + mute);
+
+
     }
     public void goToQuiz(View view){
         Intent intent = new Intent(this, QuizPage.class);

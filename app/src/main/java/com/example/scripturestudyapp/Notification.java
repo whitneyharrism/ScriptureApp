@@ -5,7 +5,10 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.util.Log;
 import android.content.Intent;
+
 
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
@@ -20,16 +23,29 @@ import static androidx.core.content.ContextCompat.getSystemService;
 //https://www.youtube.com/watch?v=1fV9NmvxXJo
 public class Notification {
     String title;
+
+    private static final String TAG = "My notification";
     String message;
     String notificationSetting;
     String channelId = "some_channel_id";
     CharSequence channelName = "Some Channel";
-    Notification n;
+    PopNotification n;
     int importance = NotificationManager.IMPORTANCE_LOW;
     //NotificationManager notificationManager =
-        //    (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+    //    (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
 
+    public boolean isMute(Context c){
+        boolean mute = false;
+        SharedPreferences pref = c.getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putBoolean("mute", true);
+        editor.commit();
+
+        boolean newMute = pref.getBoolean("mute", false);
+
+        return newMute;
+    }
 
     public void sendNotification(NotificationCompat.Builder builder){
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
