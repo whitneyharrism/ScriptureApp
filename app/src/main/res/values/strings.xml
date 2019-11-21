@@ -109,4 +109,5 @@
     <string name="goals">My Goals</string>
     <string name="profile">My Profile</string>
     <string name="title_activity_lesson_planner">LessonPlanner</string>
+    <string name="title">Title</string>
 </resources>

@@ -29,7 +29,6 @@ public class Notification {
     String notificationSetting;
     String channelId = "some_channel_id";
     CharSequence channelName = "Some Channel";
-    PopNotification n;
     int importance = NotificationManager.IMPORTANCE_LOW;
     //NotificationManager notificationManager =
     //    (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
@@ -58,7 +57,7 @@ public class Notification {
     }
     public void createNotification(Context context){
 //    NotificationCompat.Builder builder = new NotificationCompat.Builder(context, channelId)
-//            .setSmallIcon(res.drawable.iconBell)
+//            .setSmallIcon(res.drawable.icon_bell)
 //            .setContentTitle(title)
 //            .setContentText(message)
 //            .setPriority(importance);
