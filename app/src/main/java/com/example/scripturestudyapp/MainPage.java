@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+
+
 public class MainPage extends AppCompatActivity {
 
     private static final String TAG = "My notification";
@@ -28,6 +30,8 @@ public class MainPage extends AppCompatActivity {
     public void goToQuiz(View view){
         Intent intent = new Intent(this, QuizPage.class);
         startActivity(intent);
+
+
     }
     public void goToLesson(View view){
         Intent intent = new Intent(this, LessonPage.class);

@@ -34,7 +34,7 @@ public class QuizPage extends AppCompatActivity {
 
     public void submit(){}
 
-    public void setQuestion(Question q){}
+   // public void setQuestion(Question q){}
 
     public void saveProgress(){}
 }
