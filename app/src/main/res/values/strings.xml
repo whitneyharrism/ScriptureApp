@@ -110,4 +110,9 @@
     <string name="profile">My Profile</string>
     <string name="title_activity_lesson_planner">LessonPlanner</string>
     <string name="title">Title</string>
+
+    <string name="never">Never</string>
+    <string name="sometimes">Sometimes</string>
+    <string name="often">Often</string>
+    <string name="always">Always</string>
 </resources>

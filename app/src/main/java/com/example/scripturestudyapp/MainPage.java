@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -28,7 +27,7 @@ public class MainPage extends AppCompatActivity {
 
     }
     public void goToQuiz(View view){
-        Intent intent = new Intent(this, QuizPage.class);
+        Intent intent = new Intent(this, QuizList.class);
         startActivity(intent);
 
 

@@ -12,14 +12,14 @@
 
         <activity android:name=".LoginActivity" />
         <activity android:name=".QuizResults" />
-        <activity android:name=".LessonPlanner" />
+        <activity android:name=".LessonList" />
         <activity android:name=".Profile" />
         <activity
             android:name=".LessonPage"
             android:label="@string/title_activity_lesson_page"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".QuizPage"
+            android:name=".Quiz"
             android:label="@string/title_activity_quiz_page"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
