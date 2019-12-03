@@ -10,6 +10,9 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
 
+/**
+ * LessonPage is the individual lesson that the user creates.
+ */
 public class LessonPage extends AppCompatActivity {
 
     private String note[];

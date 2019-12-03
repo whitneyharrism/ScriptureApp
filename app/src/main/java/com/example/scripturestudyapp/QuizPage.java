@@ -10,6 +10,9 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
 
+/**
+ * Activity where you choose which quiz you want to take
+ */
 public class QuizPage extends AppCompatActivity {
 
     int score;

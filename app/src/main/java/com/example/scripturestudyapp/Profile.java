@@ -6,6 +6,9 @@ import android.os.Bundle;
 
 import java.util.LinkedList;
 
+/**
+ * Activity were you will see and set your notifications
+ */
 public class Profile extends AppCompatActivity {
     String userName;
     String password;

@@ -10,7 +10,9 @@ import android.util.Log;
 import android.view.View;
 
 
-
+/**
+ * The class were you can choose which area of the app to go to.
+ */
 public class MainPage extends AppCompatActivity {
 
     private static final String TAG = "My notification";

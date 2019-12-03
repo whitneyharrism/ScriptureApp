@@ -4,6 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+/**
+ * LessonPlanner is where user can add lesson plans to their profile.
+ * It will take in user information, and that is stored on the database.
+ */
 public class LessonPlanner extends AppCompatActivity {
 
     @Override

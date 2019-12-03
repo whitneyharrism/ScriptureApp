@@ -21,6 +21,10 @@ import static androidx.core.content.ContextCompat.getSystemService;
 //https://medium.com/exploring-android/exploring-android-o-notification-channels-94cd274f604c
 //https://developer.android.com/training/notify-user/build-notification
 //https://www.youtube.com/watch?v=1fV9NmvxXJo
+
+/**
+ * This class contains the information the app needs to send and set notifications
+ */
 public class Notification {
     String title;
 
