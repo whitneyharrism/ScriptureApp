@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "1079393741059",
-    "firebase_url": "https://caden-bird-test.firebaseio.com",
-    "project_id": "caden-bird-test",
-    "storage_bucket": "caden-bird-test.appspot.com"
+    "project_number": "589882089837",
+    "firebase_url": "https://scripture-study-app.firebaseio.com",
+    "project_id": "scripture-study-app",
+    "storage_bucket": "scripture-study-app.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1079393741059:android:a2ad70fcf56406a17e6136",
+        "mobilesdk_app_id": "1:589882089837:android:2ea467cf1e1ca4f719ba64",
         "android_client_info": {
-          "package_name": "com.example.logintest"
+          "package_name": "com.example.scripturestudyapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1079393741059-2u296q5auet9drdt18dedo2qdleuodmt.apps.googleusercontent.com",
+          "client_id": "589882089837-o592k2cekdj8944hs1uj4grkse99vj53.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDOqwMklzs1ngrLoYeoF2Ymj9XnTHyWyJM"
+          "current_key": "AIzaSyDqIL73gJkrmb3a5V2LKAIdaAwJL-m8ZQE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1079393741059-2u296q5auet9drdt18dedo2qdleuodmt.apps.googleusercontent.com",
+              "client_id": "589882089837-o592k2cekdj8944hs1uj4grkse99vj53.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

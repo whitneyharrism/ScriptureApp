@@ -1,22 +1,78 @@
 package com.example.scripturestudyapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
-public class QuizList extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * Provides a list of quizzes to choose from in a UI activity.
+ */
+public class QuizList extends AppCompatActivity implements View.OnClickListener {
+    Button bom, ca, nt,ot, i, dc; //The buttons for each quiz (names abbrev.)
+
+    /**
+     * Initializes the buttons and listens tells buttons to listen for user clicks.
+     * @param savedInstanceState required
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz_list);
+
+        bom = findViewById(R.id.bom);
+        bom.setOnClickListener(this);
+        ca = findViewById(R.id.ca);
+        ca.setOnClickListener(this);
+        nt = findViewById(R.id.nt);
+        nt.setOnClickListener(this);
+        ot = findViewById(R.id.ot);
+        ot.setOnClickListener(this);
+        dc = findViewById(R.id.dc);
+        dc.setOnClickListener(this);
+        i = findViewById(R.id.i);
+        i.setOnClickListener(this);
     }
-    public void goToQuiz(View view, Quiz quiz){
-        //tell it which type of quiz to show
+
+    /**
+     * Goes to QuizRunner and tells Quiz which child of quiz was requested by the user.
+     * @param quiz
+     */
+    public void goToQuiz(String quiz) {
         Intent intent = new Intent(this, QuizRunner.class);
-        intent.putExtra("QuizName","");
+        intent.putExtra("quiz", quiz);
         startActivity(intent);
+    }
+
+    /**
+     * Used to detect which button was pressed by the user and determine which quiz should be sent to goToQuiz function.
+     * @param v
+     */
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.bom:
+                goToQuiz("bom");
+                Toast toast = Toast.makeText(this,"clicked bom",Toast.LENGTH_SHORT);
+                toast.show();
+                break;
+            case R.id.ca:
+                goToQuiz("ca");
+                break;
+            case R.id.dc:
+                goToQuiz("dc");
+                break;
+            case R.id.nt:
+                goToQuiz("nt");
+                break;
+            case R.id.ot:
+                goToQuiz("ot");
+                break;
+            case R.id.i:
+                goToQuiz("i");
+                break;
+        }
     }
 }

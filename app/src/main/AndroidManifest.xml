@@ -11,8 +11,7 @@
         android:theme="@style/AppTheme">
 
         <activity android:name=".LoginActivity" />
-        <activity android:name=".QuizResults" />
-        <activity android:name=".LessonList" />
+        <!--activity android:name=".LessonList" /-->
         <activity android:name=".Profile" />
         <activity
             android:name=".LessonPage"
@@ -22,6 +21,9 @@
             android:name=".Quiz"
             android:label="@string/title_activity_quiz_page"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".QuizList"/>
+        <activity android:name=".QuizResults" />
+        <activity android:name=".QuizRunner"/>
         <activity
             android:name=".SignupActivity"
             android:label="@string/title_activity_login">
