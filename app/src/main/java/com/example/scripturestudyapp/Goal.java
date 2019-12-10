@@ -5,6 +5,10 @@ package com.example.scripturestudyapp;
  * Make 3 lesson plans
  * Get NT knowledge score up to 4
  */
+
+/**
+ * Will allow the user to set a goal, and this activity will track their progress
+ */
 public class Goal {
     String history;
     String userGoal;

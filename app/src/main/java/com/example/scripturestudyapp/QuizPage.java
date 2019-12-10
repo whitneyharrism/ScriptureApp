@@ -11,21 +11,21 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 
 /**
- * LessonPage is the individual lesson that the user creates.
+ * Activity where you choose which quiz you want to take
  */
-public class LessonPage extends AppCompatActivity {
+public class QuizPage extends AppCompatActivity {
 
-    private String note[];
-    private String link[];
+    int score;
+    private String questions[];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lesson_page);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        setContentView(R.layout.activity_quiz_page);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -35,10 +35,9 @@ public class LessonPage extends AppCompatActivity {
         });
     }
 
-    public void addNote(){}
+    public void submit(){}
 
-    public void addLink(){}
+   // public void setQuestion(Question q){}
 
-    public void save(){}
-
+    public void saveProgress(){}
 }
