@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1079393741059",
+    "firebase_url": "https://caden-bird-test.firebaseio.com",
+    "project_id": "caden-bird-test",
+    "storage_bucket": "caden-bird-test.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1079393741059:android:a2ad70fcf56406a17e6136",
+        "android_client_info": {
+          "package_name": "com.example.logintest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1079393741059-2u296q5auet9drdt18dedo2qdleuodmt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOqwMklzs1ngrLoYeoF2Ymj9XnTHyWyJM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1079393741059-2u296q5auet9drdt18dedo2qdleuodmt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
