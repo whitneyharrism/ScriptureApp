@@ -26,7 +26,7 @@ public class Tracker extends AppCompatActivity {
 
         int value = prg.getProgress();
 
-        textView1.setText(Integer.toString(value));
+        textView1.setText(Integer.toString(value)+"%");
 
         textView.setText("Goal: Read so many days");
 
@@ -50,9 +50,7 @@ public class Tracker extends AppCompatActivity {
 
         int value = p.getProgress();
 
-        p.setProgress(value);
-
-        e.setText(Integer.toString(value));
+        e.setText(Integer.toString(value)+"%");
     }
 
 }
