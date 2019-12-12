@@ -43,7 +43,7 @@ public class MainPage extends AppCompatActivity {
         startActivity(intent);
     }
     public void goToReadingTracker(View view){
-        Intent intent = new Intent(this, ReadingTracker.class);
+        Intent intent = new Intent(this, Tracker.class);
         startActivity(intent);
     }
 }
