@@ -35,11 +35,12 @@ public class BookOfMormonQuiz extends FactQuiz {
         this.addQuestion(q1,q2,q3,q4,q5,q6,q7,q8);
 
         currentQuestion = questions.peek();
+        saveProgress();
     }
 
     @Override
     public void saveProgress() {
-        mDatabase.child("Quiz").child("BOMQuiz").child("question").setValue(questionNumber);
+        mDatabase.child("Quiz").child("BOMQuiz").child("question").setValue(50);
         Log.e("BOMQuiz","setting");
     }
 }
