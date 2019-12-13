@@ -32,4 +32,9 @@ class DCQuiz extends FactQuiz {
         q8.setAnswerChoices("84", "121", "1", "32", 0);
         this.addQuestion(q1,q2,q3,q4,q5,q6,q7,q8);
     }
+
+    @Override
+    public void saveProgress() {
+        mDatabase.child("Quiz").child("DCQuiz").child("question").setValue(questionNumber);
+    }
 }

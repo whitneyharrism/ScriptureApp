@@ -1,7 +1,10 @@
 package com.example.scripturestudyapp;
 
-import android.widget.Button;
-import android.widget.TextView;
+
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -15,15 +18,18 @@ public abstract class Quiz {
     protected Queue<Question> questions = new LinkedList<>();
     protected Question currentQuestion;
     public int questionNumber;
-    private Button btn_one, btn_two, btn_three, btn_four;
-    TextView tv_question;
+    protected DatabaseReference mDatabase;
+// ...
 
     /**
      * Tells all children what the buttons in QuizRunner are.
      */
     public Quiz(){
         questionNumber = 0;
+        //TODO Set the current question equal to the saved question from last session
+        //Post p = DataSnapshot.getValue(Quiz.class);
         currentQuestion = questions.peek();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
     }
 
 
@@ -90,7 +96,10 @@ public abstract class Quiz {
     /**
      * saves the quiz to the database
      */
-    public void saveProgress(){}
+    public abstract void saveProgress();
+    public void saveScore(){
+
+    }
 
 
 }

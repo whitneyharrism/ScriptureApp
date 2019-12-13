@@ -8,4 +8,9 @@ class OldTestamentQuiz extends FactQuiz {
     public OldTestamentQuiz() {
 
     }
+
+    @Override
+    public void saveProgress() {
+        mDatabase.child("Quiz").child("OTQuiz").child("question").setValue(questionNumber);
+    }
 }

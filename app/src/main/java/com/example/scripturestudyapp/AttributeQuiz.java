@@ -1,5 +1,7 @@
 package com.example.scripturestudyapp;
 
+import android.util.Log;
+
 /**
  * Quiz that asks the user to rate themselves on Christlike attributes
  * Passed as quiz in quizRunner
@@ -117,5 +119,11 @@ public class AttributeQuiz extends ScaleQuiz {
         this.addQuestion(q81,q82,q83,q84,q85,q86,q87,q88,q89);
 
         currentQuestion = questions.peek();
+    }
+
+    @Override
+    public void saveProgress() {
+        mDatabase.child("Quiz").child("CAQuiz").child("question").setValue(questionNumber);
+        Log.e("AttributeQuiz","setting");
     }
 }

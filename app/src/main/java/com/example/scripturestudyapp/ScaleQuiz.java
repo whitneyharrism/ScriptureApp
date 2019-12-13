@@ -3,7 +3,7 @@ package com.example.scripturestudyapp;
 /**
  * Type of quiz with set answer choices used to rate how much the user agrees with an question
  */
-class ScaleQuiz extends Quiz{
+abstract class ScaleQuiz extends Quiz{
 
     //only accepts ScaleQuestions
     public void addQuestion(ScaleQuestion... q){
@@ -12,4 +12,7 @@ class ScaleQuiz extends Quiz{
             questions.add(q[i]);
         }
     }
+
+    @Override
+    public abstract void saveProgress();
 }
