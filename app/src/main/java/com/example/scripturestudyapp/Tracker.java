@@ -18,7 +18,7 @@ public class Tracker extends AppCompatActivity {
         setContentView(R.layout.activity_tracker);
         Button btn = findViewById(R.id.button2);
 
-        TextView textView = findViewById(R.id.textView);
+        TextView goal = findViewById(R.id.goal);
 
         final TextView textView1 = findViewById(R.id.textView2);
 
@@ -28,7 +28,7 @@ public class Tracker extends AppCompatActivity {
 
         textView1.setText(Integer.toString(value)+"%");
 
-        textView.setText("Goal: Read so many days");
+        goal.setText("Goal: Read so many days");
 
         btn.setText("Did you do it?");
 
@@ -53,4 +53,6 @@ public class Tracker extends AppCompatActivity {
         e.setText(Integer.toString(value)+"%");
     }
 
+    public static class LessonList {
+    }
 }

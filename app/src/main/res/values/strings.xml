@@ -116,4 +116,17 @@
     <string name="often">Often</string>
     <string name="always">Always</string>
     <string name="save">Save Progress</string>
+    <string name="empty">Whoops! Something should be here!</string>
+    <string name="sign_up">Not registered? Sign Up here</string>
+    <string name="logo">Logo</string>
+    <string name="reading_tracker_btn">Reading Tracker</string>
+    <string name="ca_quiz_title">Christlike attribute</string>
+    <string name="bom_quiz_title">Book Of Mormon</string>
+    <string name="dc_quiz_title">D and C</string>
+    <string name="nt_quiz_title">New Testiment</string>
+    <string name="ot_quiz_title">Old Testiment</string>
+    <string name="results_title">Results</string>
+    <string name="suggested">Suggested Reading</string>
+    <string name="main_menu">Main Menu</string>
+    <string name="try_again_btn">Try Again</string>
 </resources>

@@ -2,6 +2,7 @@ package com.example.scripturestudyapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
@@ -42,20 +43,21 @@ public class LoginActivity extends AppCompatActivity {
         emailId = findViewById(R.id.editText);
         password = findViewById(R.id.editText2);
         btnSignIn = findViewById(R.id.button2);
-        tvSignUp = findViewById(R.id.textView);
+        tvSignUp = findViewById(R.id.sign_in_link);
 
         mAuthStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser mFirebaseUser = mFirebaseAuth.getCurrentUser();
-                if( mFirebaseUser != null ){
-                    Toast.makeText(LoginActivity.this,"You are logged in",Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(LoginActivity.this, MainPage.class);
-                    startActivity(i);
-                }
-                else{
-                    Toast.makeText(LoginActivity.this,"Please Login",Toast.LENGTH_SHORT).show();
-                }
+
+//                FirebaseUser mFirebaseUser = mFirebaseAuth.getCurrentUser();
+//                if( mFirebaseUser != null){
+//                    Toast.makeText(LoginActivity.this,"You are logged in",Toast.LENGTH_SHORT).show();
+//                    Intent i = new Intent(LoginActivity.this, MainPage.class);
+//                    startActivity(i);
+//                }
+//                else{
+//                    Toast.makeText(LoginActivity.this,"Please Login",Toast.LENGTH_SHORT).show();
+//                }
             }
         };
 

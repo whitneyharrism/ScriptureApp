@@ -47,7 +47,7 @@ public class QuizRunner extends AppCompatActivity implements View.OnClickListene
     @Override
     protected void onCreate(Bundle savedInstanceState) throws NullPointerException{
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_quiz);
 
         btn_one = findViewById(R.id.btn_one);
         btn_one.setOnClickListener(this);

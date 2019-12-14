@@ -40,7 +40,7 @@ public class BookOfMormonQuiz extends FactQuiz {
 
     @Override
     public void saveProgress() {
-        mDatabase.child("Quiz").child("BOMQuiz").child("question").setValue(50);
+        mDatabase.child("Quiz").child("BOMQuiz").child("question").setValue("something");
         Log.e("BOMQuiz","setting");
     }
 }
