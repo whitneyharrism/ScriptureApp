@@ -78,6 +78,7 @@ public class SignupActivity extends AppCompatActivity {
         tvSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
                 Intent i = new Intent(SignupActivity.this,LoginActivity.class);
                 startActivity(i);
             }
