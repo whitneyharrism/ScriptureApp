@@ -1,6 +1,12 @@
 package com.example.scripturestudyapp;
 
 import android.util.Log;
+import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * Quiz that asks the user what they know about the Book of Mormon
@@ -9,7 +15,7 @@ import android.util.Log;
  * @since 12/3/19
  */
 public class BookOfMormonQuiz extends FactQuiz {
-
+final String TAG = "BookOfMormonQuiz";
     BookOfMormonQuiz()
     {
         FactQuestion q1 = new FactQuestion("When does the book of mormon begin?","Book of mormon");
@@ -33,6 +39,7 @@ public class BookOfMormonQuiz extends FactQuiz {
         FactQuestion q8 = new FactQuestion("What did Alma teach to the people in Antionum?", "Book of mormon");
         q8.setAnswerChoices("To pray in their hearts", "Not to worship false idols", "To pray humbly", "To make a temple", 3);
         this.addQuestion(q1,q2,q3,q4,q5,q6,q7,q8);
+        loadProgress();
 
         currentQuestion = questions.peek();
 //        saveProgress();
@@ -42,20 +49,35 @@ public class BookOfMormonQuiz extends FactQuiz {
     @Override
     public void saveProgress() {
         mDatabase.child("Quiz").child("BOMQuiz").child("question").setValue(questionNumber);
-        Log.e("BOMQuiz","setting");
+        Log.e("BOMQuiz","setting"+questionNumber);
     }
     public void loadProgress(){
-
+        ValueEventListener vel=FirebaseDatabase.getInstance().getReference().child("Quiz").child("BOMQuiz").child("question").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                Log.e(TAG,""+snapshot.getValue());  //prints "Do you have data? You'll love Firebase."
+                questionNumber = Integer.parseInt(snapshot.getValue().toString());
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+        for(int i = 1;i<questionNumber;i++)
+        {
+            deleteQuestion();
+            questionNumber++;
+        }
+        FirebaseDatabase.getInstance().getReference().removeEventListener(vel);
     }
 
     @Override
     public void saveScore(int score) {
-
+        FirebaseDatabase.getInstance().getReference().child("Quiz").child("BOMQuiz").child("score").setValue(score);
     }
 
 
     @Override
     public void loadScore() {
-
+        //print score from database
     }
 }

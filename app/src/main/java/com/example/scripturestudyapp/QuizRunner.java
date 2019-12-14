@@ -91,36 +91,6 @@ public class QuizRunner extends AppCompatActivity implements View.OnClickListene
         if(quiz.getSize() <= 0) Log.e(TAG, "Quiz size is 0. Quiz needs to reset size.");
         else Log.i(TAG, "Quiz size: "+quiz.getSize());
 
-//        ValueEventListener questionListener = new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                //read the question value from the database
-//                Quiz getQuiz;
-//                try {
-//                    getQuiz = dataSnapshot.getValue(Quiz.class);
-//                    quiz.questionNumber = getQuiz.questionNumber;
-//                }
-//                catch (NullPointerException n){
-//                    n.printStackTrace();
-//                }
-//
-//                //after we get the value from firebase go to the current question
-//                Log.e(TAG, "Quiz question num: "+quiz.questionNumber);
-////                for (int i = 0; i < quiz.questionNumber; i++) {
-////                    quiz.questions.remove();
-////                }
-//            }
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//                // Getting Post failed, log a message
-//                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-//                // [START_EXCLUDE]
-//                Toast.makeText(QuizRunner.this, "Failed to load question.",
-//                        Toast.LENGTH_SHORT).show();
-//                // [END_EXCLUDE]
-//            }
-//        };
-//        quiz.mDatabase.addValueEventListener(questionListener);
 
         display();
     }
