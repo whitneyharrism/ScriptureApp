@@ -48,10 +48,9 @@ public class QuizResults extends AppCompatActivity {
         if(score > 0) {
             String addedText = "\n" + topic + " " + score;
             results.append(addedText);
-            FirebaseDatabase.getInstance().getReference().child("Quiz").child("BOMQuiz").child("score").setValue(score);
         }
     }
-    //TODO suggested reading based on topic
+
     public void suggestedReading()
     {
         String reading = getIntent().getStringExtra("suggest reading");

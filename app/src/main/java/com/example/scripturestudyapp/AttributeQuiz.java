@@ -2,6 +2,8 @@ package com.example.scripturestudyapp;
 
 import android.util.Log;
 
+import com.google.firebase.database.FirebaseDatabase;
+
 /**
  * Quiz that asks the user to rate themselves on Christlike attributes
  * Passed as quiz in quizRunner
@@ -125,5 +127,20 @@ public class AttributeQuiz extends ScaleQuiz {
     public void saveProgress() {
         mDatabase.child("Quiz").child("CAQuiz").child("question").setValue(questionNumber);
         Log.e("AttributeQuiz","setting");
+    }
+
+    @Override
+    public void loadProgress() {
+
+    }
+
+    @Override
+    public void saveScore(int score) {
+        FirebaseDatabase.getInstance().getReference().child("CAQuiz").setValue(score);
+    }
+
+    @Override
+    public void loadScore() {
+
     }
 }

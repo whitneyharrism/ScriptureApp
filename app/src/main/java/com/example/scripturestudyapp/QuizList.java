@@ -55,8 +55,6 @@ public class QuizList extends AppCompatActivity implements View.OnClickListener 
         switch (v.getId()) {
             case R.id.bom:
                 goToQuiz("bom");
-                Toast toast = Toast.makeText(this,"clicked bom",Toast.LENGTH_SHORT);
-                toast.show();
                 break;
             case R.id.ca:
                 goToQuiz("ca");

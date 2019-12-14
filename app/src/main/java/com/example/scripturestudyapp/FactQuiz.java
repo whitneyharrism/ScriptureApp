@@ -14,4 +14,7 @@ public abstract class FactQuiz extends Quiz {
 
     @Override
     public abstract void saveProgress();
+    public abstract void loadProgress();
+    public abstract void saveScore(int score);
+    public abstract void loadScore();
 }

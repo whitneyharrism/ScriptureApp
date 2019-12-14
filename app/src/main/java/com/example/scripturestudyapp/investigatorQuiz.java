@@ -6,7 +6,7 @@ package com.example.scripturestudyapp;
  * @author caden
  */
 class investigatorQuiz extends FactQuiz {
-    public investigatorQuiz() {
+    investigatorQuiz() {
         FactQuestion q1 = new FactQuestion("Who is Jesus Christ","Investigator");
         q1.setAnswerChoices("Just a man", "A jewish political leader", "The Savior", "a myth", 3);
         q1.setScriptureReading("3 Nephi, Luke 22");
@@ -36,5 +36,20 @@ class investigatorQuiz extends FactQuiz {
     @Override
     public void saveProgress() {
         mDatabase.child("Quiz").child("InvQuiz").child("question").setValue(questionNumber);
+    }
+
+    @Override
+    public void loadProgress() {
+
+    }
+
+    @Override
+    public void saveScore(int score) {
+
+    }
+
+    @Override
+    public void loadScore() {
+
     }
 }

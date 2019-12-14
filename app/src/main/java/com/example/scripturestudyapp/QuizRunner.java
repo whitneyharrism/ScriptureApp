@@ -252,6 +252,6 @@ public class QuizRunner extends AppCompatActivity implements View.OnClickListene
 
     public void save(View view){
         quiz.saveProgress();
-        quiz.saveScore();
+        //quiz.saveScore();
     }
 }

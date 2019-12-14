@@ -27,7 +27,7 @@ public abstract class Quiz {
     public Quiz(){
         //questionNumber = 0;
         //TODO Set the current question equal to the saved question from last session
-        currentQuestion = questions.peek();
+        currentQuestion = getQuestion();
         mDatabase = FirebaseDatabase.getInstance().getReference();
     }
 
@@ -37,7 +37,7 @@ public abstract class Quiz {
      * @return
      */
     Question getQuestion(){
-        //if(questions.peek() == null) QuizRunner.openResultsPage();
+        loadProgress();
         return questions.peek();
     }
 
@@ -96,9 +96,9 @@ public abstract class Quiz {
      * saves the quiz to the database
      */
     public abstract void saveProgress();
-    public void saveScore(){
-
-    }
+    public abstract void loadProgress();
+    public abstract void saveScore(int score);
+    public abstract void loadScore();
 
 
 }

@@ -43,7 +43,7 @@ public class Tracker extends AppCompatActivity {
         percentRead = 0;
         percentReadText.setText(Integer.toString(value)+"%");
 
-        //goal.setText("Goal: Read "+goalDays from database+" times this month");
+        goal.setText("Goal: Read "+FirebaseDatabase.getInstance().getReference().child("ReadingTracker").child("GoalDays")+" times this month");
 
         btn.setText("Day 0");
 

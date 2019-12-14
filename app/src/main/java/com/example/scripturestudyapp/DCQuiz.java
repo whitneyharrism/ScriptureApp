@@ -39,4 +39,19 @@ class DCQuiz extends FactQuiz {
     public void saveProgress() {
         mDatabase.child("Quiz").child("DCQuiz").child("question").setValue(questionNumber);
     }
+
+    @Override
+    public void loadProgress() {
+
+    }
+
+    @Override
+    public void saveScore(int score) {
+
+    }
+
+    @Override
+    public void loadScore() {
+
+    }
 }

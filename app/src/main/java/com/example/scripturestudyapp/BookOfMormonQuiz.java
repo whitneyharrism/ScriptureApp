@@ -44,4 +44,18 @@ public class BookOfMormonQuiz extends FactQuiz {
         mDatabase.child("Quiz").child("BOMQuiz").child("question").setValue(questionNumber);
         Log.e("BOMQuiz","setting");
     }
+    public void loadProgress(){
+
+    }
+
+    @Override
+    public void saveScore(int score) {
+
+    }
+
+
+    @Override
+    public void loadScore() {
+
+    }
 }

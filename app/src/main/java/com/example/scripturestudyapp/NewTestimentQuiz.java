@@ -6,7 +6,7 @@ package com.example.scripturestudyapp;
  * @author caden
  */
 class NewTestimentQuiz extends FactQuiz {
-    public NewTestimentQuiz() {
+    NewTestimentQuiz() {
         FactQuestion q1 = new FactQuestion("What is the first book of the New Testament?","New Testament");
         q1.setAnswerChoices("Mathew", "Mark", "Luke", "James", 1);
         q1.setScriptureReading("Mathew");
@@ -38,5 +38,20 @@ class NewTestimentQuiz extends FactQuiz {
     @Override
     public void saveProgress() {
         mDatabase.child("Quiz").child("NTQuiz").child("question").setValue(questionNumber);
+    }
+
+    @Override
+    public void loadProgress() {
+
+    }
+
+    @Override
+    public void saveScore(int score) {
+
+    }
+
+    @Override
+    public void loadScore() {
+
     }
 }
