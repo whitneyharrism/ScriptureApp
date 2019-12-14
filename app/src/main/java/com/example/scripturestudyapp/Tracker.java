@@ -5,13 +5,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 
 
 public class Tracker extends AppCompatActivity {
+    private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    private DatabaseReference mRootReference = firebaseDatabase.getReference();
+    private DatabaseReference trackerReference = mRootReference.child("tracker");
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +52,9 @@ public class Tracker extends AppCompatActivity {
             public void onClick(View v) {
                 changeProgress(prg, textView1);
 
+                Toast.makeText(Tracker.this,"value set",Toast.LENGTH_SHORT).show();
+
+
             }
         });
 
@@ -49,6 +62,7 @@ public class Tracker extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt("progressTrack",prg.getProgress());
         editor.commit();
+
 
     }
 
