@@ -2,6 +2,7 @@ package com.example.scripturestudyapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import android.view.View;
@@ -24,13 +25,17 @@ public class Tracker extends AppCompatActivity {
 
         final ProgressBar prg = findViewById(R.id.progressBar);
 
-        int value = prg.getProgress();
+        SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
+
+        int value = sharedPreferences.getInt("progressTrack", 0);
 
         textView1.setText(Integer.toString(value)+"%");
 
         textView.setText("Goal: Read so many days");
 
         btn.setText("Did you do it?");
+
+        prg.setProgress(value);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,7 +45,10 @@ public class Tracker extends AppCompatActivity {
             }
         });
 
-        prg.setProgress(prg.getProgress());
+
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("progressTrack",prg.getProgress());
+        editor.commit();
 
     }
 
