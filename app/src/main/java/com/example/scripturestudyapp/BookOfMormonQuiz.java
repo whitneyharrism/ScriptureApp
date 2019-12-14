@@ -65,9 +65,10 @@ final String TAG = "BookOfMormonQuiz";
         for(int i = 1;i<questionNumber;i++)
         {
             deleteQuestion();
-            questionNumber++;
         }
+        questionNumber+=3;
         FirebaseDatabase.getInstance().getReference().removeEventListener(vel);
+
     }
 
     @Override
