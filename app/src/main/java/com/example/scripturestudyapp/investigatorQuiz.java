@@ -35,6 +35,6 @@ class investigatorQuiz extends FactQuiz {
 
     @Override
     public void saveProgress() {
-        mDatabase.child("Quiz").child("IQuiz").child("question").setValue(questionNumber);
+        mDatabase.child("Quiz").child("InvQuiz").child("question").setValue(questionNumber);
     }
 }
