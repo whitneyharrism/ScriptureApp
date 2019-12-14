@@ -7,6 +7,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.database.FirebaseDatabase;
+
 /**
  * Displays the resulting score from completing a quiz.
  */
@@ -46,6 +48,7 @@ public class QuizResults extends AppCompatActivity {
         if(score > 0) {
             String addedText = "\n" + topic + " " + score;
             results.append(addedText);
+            FirebaseDatabase.getInstance().getReference().child("Quiz").child("BOMQuiz").child("score").setValue(score);
         }
     }
     //TODO suggested reading based on topic

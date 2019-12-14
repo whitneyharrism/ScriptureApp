@@ -25,9 +25,8 @@ public abstract class Quiz {
      * Tells all children what the buttons in QuizRunner are.
      */
     public Quiz(){
-        questionNumber = 0;
+        //questionNumber = 0;
         //TODO Set the current question equal to the saved question from last session
-        //Post p = DataSnapshot.getValue(Quiz.class);
         currentQuestion = questions.peek();
         mDatabase = FirebaseDatabase.getInstance().getReference();
     }
