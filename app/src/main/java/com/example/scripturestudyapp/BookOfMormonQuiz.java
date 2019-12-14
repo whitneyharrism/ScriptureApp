@@ -34,13 +34,20 @@ public class BookOfMormonQuiz extends FactQuiz {
         q8.setAnswerChoices("To pray in their hearts", "Not to worship false idols", "To pray humbly", "To make a temple", 3);
         this.addQuestion(q1,q2,q3,q4,q5,q6,q7,q8);
 
+        //TODO Log.e("ths",mDatabase.child("Quiz").child("BOMQuiz").child("question").);
+        questionNumber = Integer.parseInt(mDatabase.child("Quiz").child("BOMQuiz").child("question").getKey());
+        for(int i = 0;i < questionNumber;i++)
+        {
+            questions.remove();
+        }
         currentQuestion = questions.peek();
-        saveProgress();
+//        saveProgress();
+
     }
 
     @Override
     public void saveProgress() {
-        mDatabase.child("Quiz").child("BOMQuiz").child("question").setValue("something");
+        mDatabase.child("Quiz").child("BOMQuiz").child("question").setValue(questionNumber);
         Log.e("BOMQuiz","setting");
     }
 }
