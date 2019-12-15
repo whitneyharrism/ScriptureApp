@@ -20,75 +20,87 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.DecimalFormat;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 
 public class Tracker extends AppCompatActivity {
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference mRootReference = firebaseDatabase.getReference();
     int day;
-    double percentRead;
+    int percentRead;
+    int goalDays;
+    int currentMonth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tracker);
         final Button btn = findViewById(R.id.button2);
-
         final TextView goal = findViewById(R.id.goal);
-
         final TextView percentReadText = findViewById(R.id.textView2);
-
         final ProgressBar prg = findViewById(R.id.progressBar);
 
-        SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
-
-        int value = sharedPreferences.getInt("progressTrack", 0);
-        percentRead = 0;
-        percentReadText.setText(Integer.toString(value)+"%");
+        percentReadText.setText(Integer.toString(percentRead)+"%");
         FirebaseDatabase.getInstance().getReference().addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot){
                 goal.setText("Goal: Read "+dataSnapshot.child("ReadingTracker").child("GoalDays").getValue()+" times this month");
+                goalDays = Integer.parseInt(dataSnapshot.child("ReadingTracker").child("GoalDays").getValue().toString());
+                prg.setProgress(Integer.parseInt(dataSnapshot.child("ReadingTracker").child("percentage").getValue().toString()));
+                currentMonth = Integer.parseInt(dataSnapshot.child("ReadingTracker").child("month").getValue().toString());
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
+        //Check if new month
+        Date date = new Date();
+        if(date.getMonth() != currentMonth) {
+            prg.setProgress(0);
+            FirebaseDatabase.getInstance().getReference().child("ReadingTracker").child("month").setValue(date.getMonth());
+        }
 
 
         btn.setText("Day 0");
 
-        prg.setProgress(value);
+        //prg.setProgress(value);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 changeProgress(prg, percentReadText);
 
-                Toast.makeText(Tracker.this,"value set",Toast.LENGTH_SHORT).show();
-                day++;
-                percentRead += 1/5;
-                //if(day < goalDays)
+
+                ++day;
+
+                if(day <= goalDays)
                 btn.setText("Day "+day);
-                //else
-                //{btn.setEnabled(false);btn.setText("Reading goal met");
+                else
+                {btn.setEnabled(false);btn.setText("Reading goal met");}
             }
         });
-        day = 0;
-
-
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt("progressTrack",prg.getProgress());
-        editor.commit();
-
-
+        day = 1;
     }
 
-    public void changeProgress(ProgressBar p, TextView e){
+    public void changeProgress(ProgressBar pb, TextView percentText){
+        double temp1 = goalDays;
+        double temp2 = (1.0/temp1)*100.0;
+        percentRead = (int)temp2;
+        if(day == goalDays) pb.setProgress(100);
+        pb.incrementProgressBy(Math.round(percentRead));
+        int value = pb.getProgress();
+        percentText.setText(Integer.toString(value)+"%");
+    }
 
-        p.incrementProgressBy(5);
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        FirebaseDatabase.getInstance().getReference().child("ReadingTracker").child("percentage").setValue(percentRead);
+    }
 
-        int value = p.getProgress();
-
-        e.setText(Integer.toString(value)+"%");
+    @Override
+    protected void onPause() {
+        super.onPause();
+        FirebaseDatabase.getInstance().getReference().child("ReadingTracker").child("percentage").setValue(percentRead);
     }
 }
