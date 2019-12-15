@@ -59,4 +59,14 @@
         app:layout_constraintStart_toStartOf="@+id/progressBar"
         app:layout_constraintTop_toTopOf="@+id/progressBar" />
 
+    <EditText
+        android:id="@+id/goalDays"
+        android:layout_width="60dp"
+        android:layout_height="43dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Goal"
+        tools:layout_editor_absoluteX="18dp"
+        tools:layout_editor_absoluteY="529dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

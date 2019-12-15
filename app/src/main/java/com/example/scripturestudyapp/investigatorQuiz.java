@@ -31,6 +31,10 @@ class investigatorQuiz extends FactQuiz {
         FactQuestion q8 = new FactQuestion("The Priesthood is...?", "Investigator");
         q8.setAnswerChoices("The power of God", "Name of the bishoprick", "only in biblical times", "not a thing", 1);
         q8.setScriptureReading("D+C 84");
+        this.addQuestion(q1,q2,q3,q4,q5,q6,q7,q8);
+
+        currentQuestion = questions.peek();
+        saveProgress();
     }
 
     @Override

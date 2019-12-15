@@ -21,7 +21,6 @@ import java.text.DecimalFormat;
 public class Tracker extends AppCompatActivity {
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference mRootReference = firebaseDatabase.getReference();
-    private DatabaseReference trackerReference = mRootReference.child("tracker");
     int day;
     double percentRead;
 
