@@ -124,18 +124,18 @@
 
     <TextView
         android:id="@+id/textView15"
-        android:layout_width="181dp"
-        android:layout_height="34dp"
+        android:layout_width="176dp"
+        android:layout_height="119dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="60dp"
-        android:text="Book Of Mormon:"
+        android:text="Book Of Mormon:\nChristlike Attributes:\nOld Testiment:\nNew Testiment\nInvestigator Quiz:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
     <TextView
         android:id="@+id/bookOfMormonBox"
-        android:layout_width="77dp"
-        android:layout_height="32dp"
+        android:layout_width="73dp"
+        android:layout_height="126dp"
         android:layout_marginStart="32dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"

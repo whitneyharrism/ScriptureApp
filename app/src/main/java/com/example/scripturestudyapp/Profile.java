@@ -28,7 +28,7 @@ public class Profile extends AppCompatActivity {
     int goalDays;
     int goalPercComplete;
     EditText goalDaysBox;
-    TextView userNameBox, bookOfMormonScore;
+    TextView userNameBox, scoresBox;
     String TAG;
 
     @Override
@@ -44,17 +44,22 @@ public class Profile extends AppCompatActivity {
         }
 
         ///////////////////////////////////////////////////////////Scores//////////////////////////////
-        bookOfMormonScore = findViewById(R.id.bookOfMormonBox);
+        scoresBox = findViewById(R.id.bookOfMormonBox);
         //bookOfMormonScore.setText(FirebaseDatabase.getInstance().getReference().child("Quiz").child("BOMQuiz").child("score").getValue());
-        DatabaseReference BOMDatabase = FirebaseDatabase.getInstance().getReference().child("Quiz").child("BOMQuiz");
+        DatabaseReference BOMDatabase = FirebaseDatabase.getInstance().getReference().child("Quiz");
         BOMDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 //bookOfMormonScore = (TextView) dataSnapshot.getValue();
-                String BOMScore = (String) dataSnapshot.child("score").getValue();
-                Toast.makeText(Profile.this,BOMScore,Toast.LENGTH_SHORT).show();
-                Log.w(TAG, String.valueOf(BOMScore));
-                bookOfMormonScore.setText(BOMScore);
+                String BOMScore = dataSnapshot.child("BOMQuiz").child("score").getValue().toString();
+                //Toast.makeText(Profile.this,BOMScore,Toast.LENGTH_SHORT).show();
+                Log.w(TAG, dataSnapshot.child("CAQuiz").child("score").getValue().toString());
+                scoresBox.setText(BOMScore);
+                scoresBox.append("\n"+dataSnapshot.child("CAQuiz").child("score").getValue().toString());
+                scoresBox.append("\n"+dataSnapshot.child("OTQuiz").child("score").getValue().toString());
+                scoresBox.append("\n"+dataSnapshot.child("NTQuiz").child("score").getValue().toString());
+                scoresBox.append("\n"+dataSnapshot.child("InvQuiz").child("score").getValue().toString());
+
             }
 
             @Override
