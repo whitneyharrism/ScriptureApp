@@ -107,7 +107,7 @@ public class QuizRunner extends AppCompatActivity implements View.OnClickListene
         {
             addFactScore(topic);
             if(quiz.currentQuestion.scriptureReading != null)
-            results += " " + quiz.currentQuestion.scriptureReading;
+            {results += "" + quiz.currentQuestion.scriptureReading + ", ";}
         }
 
     }
@@ -221,7 +221,7 @@ public class QuizRunner extends AppCompatActivity implements View.OnClickListene
     }
 
     public void save(View view){
-        quiz.saveProgress();
+        //quiz.saveProgress();
         //quiz.saveScore();
     }
 }

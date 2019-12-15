@@ -55,7 +55,7 @@ public class QuizResults extends AppCompatActivity {
     {
         String reading = getIntent().getStringExtra("suggest reading");
         if(reading != null)
-            suggestion.append(reading);
+        {suggestion.append(reading + ".");}
     }
 
     /**

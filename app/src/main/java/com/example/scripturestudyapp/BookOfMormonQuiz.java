@@ -52,22 +52,22 @@ final String TAG = "BookOfMormonQuiz";
         Log.e("BOMQuiz","setting"+questionNumber);
     }
     public void loadProgress(){
-        ValueEventListener vel=FirebaseDatabase.getInstance().getReference().child("Quiz").child("BOMQuiz").child("question").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                Log.e(TAG,""+snapshot.getValue());  //prints "Do you have data? You'll love Firebase."
-                questionNumber = Integer.parseInt(snapshot.getValue().toString());
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        });
-        for(int i = 1;i<questionNumber;i++)
-        {
-            deleteQuestion();
-        }
-        //questionNumber+=3;
-        FirebaseDatabase.getInstance().getReference().removeEventListener(vel);
+//        ValueEventListener vel=FirebaseDatabase.getInstance().getReference().child("Quiz").child("BOMQuiz").child("question").addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot snapshot) {
+//                Log.e(TAG,""+snapshot.getValue());  //prints "Do you have data? You'll love Firebase."
+//                questionNumber = Integer.parseInt(snapshot.getValue().toString());
+//            }
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//            }
+//        });
+//        for(int i = 1;i<questionNumber;i++)
+//        {
+//            deleteQuestion();
+//        }
+//        //questionNumber+=3;
+//        FirebaseDatabase.getInstance().getReference().removeEventListener(vel);
 
     }
 
