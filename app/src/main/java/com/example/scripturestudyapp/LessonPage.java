@@ -29,7 +29,7 @@ public class LessonPage extends AppCompatActivity {
     final String TAG = "LessonPage";
     EditText commitment,message,notes;
     TextView links;
-    final DatabaseReference LessonDatabase = FirebaseDatabase.getInstance().getReference().child("LessonOne");
+    DatabaseReference LessonDatabase = FirebaseDatabase.getInstance().getReference().child("Lesson").child("LessonOne");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
