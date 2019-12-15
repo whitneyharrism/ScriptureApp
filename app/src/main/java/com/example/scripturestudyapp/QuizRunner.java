@@ -106,8 +106,15 @@ public class QuizRunner extends AppCompatActivity implements View.OnClickListene
         else if(quiz.testAnswer(quiz.currentQuestion.getAnswerChoice(i-1)))
         {
             addFactScore(topic);
+        }
+        else{
             if(quiz.currentQuestion.scriptureReading != null)
-            {results += "" + quiz.currentQuestion.scriptureReading + ", ";}
+            {
+                if(results == null)
+                results += "" + quiz.currentQuestion.scriptureReading;
+                else
+                    results += ", " + quiz.currentQuestion.scriptureReading;
+            }
         }
 
     }
