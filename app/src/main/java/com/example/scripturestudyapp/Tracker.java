@@ -1,5 +1,6 @@
 package com.example.scripturestudyapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
@@ -12,8 +13,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.DecimalFormat;
 
@@ -30,7 +34,7 @@ public class Tracker extends AppCompatActivity {
         setContentView(R.layout.activity_tracker);
         final Button btn = findViewById(R.id.button2);
 
-        TextView goal = findViewById(R.id.goal);
+        final TextView goal = findViewById(R.id.goal);
 
         final TextView percentReadText = findViewById(R.id.textView2);
 
@@ -41,8 +45,16 @@ public class Tracker extends AppCompatActivity {
         int value = sharedPreferences.getInt("progressTrack", 0);
         percentRead = 0;
         percentReadText.setText(Integer.toString(value)+"%");
+        FirebaseDatabase.getInstance().getReference().addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot){
+                goal.setText("Goal: Read "+dataSnapshot.child("ReadingTracker").child("GoalDays").getValue()+" times this month");
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
 
-        goal.setText("Goal: Read "+FirebaseDatabase.getInstance().getReference().child("ReadingTracker").child("GoalDays")+" times this month");
 
         btn.setText("Day 0");
 
