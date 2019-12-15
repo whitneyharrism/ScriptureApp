@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "589882089837",
+    "firebase_url": "https://scripture-study-app.firebaseio.com",
+    "project_id": "scripture-study-app",
+    "storage_bucket": "scripture-study-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:589882089837:android:2ea467cf1e1ca4f719ba64",
+        "android_client_info": {
+          "package_name": "com.example.scripturestudyapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "589882089837-m6b0011an3jn715r44dsv8473ldlk2an.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.scripturestudyapp",
+            "certificate_hash": "abec78460c1ae4bf58f4dc344beea4cf0a157af1"
+          }
+        },
+        {
+          "client_id": "589882089837-6ktjgg1a1fu4h8jmdv8kad6lnvkq230v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.scripturestudyapp",
+            "certificate_hash": "c99f3c5688a889db4429e67deaacf4f63270acc6"
+          }
+        },
+        {
+          "client_id": "589882089837-o592k2cekdj8944hs1uj4grkse99vj53.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqIL73gJkrmb3a5V2LKAIdaAwJL-m8ZQE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "589882089837-o592k2cekdj8944hs1uj4grkse99vj53.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
