@@ -13,6 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,7 +26,9 @@ public class Tracker extends AppCompatActivity {
     int day;
     int percentRead;
     int goalDays;
-    int currentMonth;
+    int lastReadMonth;
+    int lastReadDay;
+    Date date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +47,8 @@ public class Tracker extends AppCompatActivity {
                 prg.setProgress(Integer.parseInt(dataSnapshot.child("ReadingTracker").child("percentage").getValue().toString()));
                 percentRead = Integer.parseInt(dataSnapshot.child("ReadingTracker").child("percentage").getValue().toString());
                 percentReadText.setText(dataSnapshot.child("ReadingTracker").child("percentage").getValue().toString()+"%");
-                currentMonth = Integer.parseInt(dataSnapshot.child("ReadingTracker").child("month").getValue().toString());
+                lastReadMonth = Integer.parseInt(dataSnapshot.child("ReadingTracker").child("lastReadMonth").getValue().toString());
+                lastReadDay = Integer.parseInt(dataSnapshot.child("ReadingTracker").child("lastReadDay").getValue().toString());
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -52,10 +56,10 @@ public class Tracker extends AppCompatActivity {
         });
 
         //Check if new month
-        Date date = new Date();
-        if(date.getMonth() != currentMonth) {
+        date = new Date();
+        if(date.getMonth() != lastReadMonth) {
             prg.setProgress(0);
-            FirebaseDatabase.getInstance().getReference().child("ReadingTracker").child("month").setValue(date.getMonth());
+            FirebaseDatabase.getInstance().getReference()/*.child(FirebaseAuth.getInstance().getCurrentUser().getUid())*/.child("ReadingTracker").child("month").setValue(date.getMonth());
         }
 
 
@@ -64,13 +68,17 @@ public class Tracker extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                changeProgress(prg, percentReadText);
+
 
 
                 //++day;
 
-                if(day < goalDays)
-                btn.setText("Day "+day);
+                if(day < goalDays && date.getDay() != lastReadDay)
+                {changeProgress(prg, percentReadText);btn.setText("Day "+day);}
+                else if(date.getDay() == lastReadDay)
+                {
+                    btn.setEnabled(false);btn.setText("Marked as read today");
+                }
                 else
                 {btn.setEnabled(false);btn.setText("Reading goal met");}
             }
