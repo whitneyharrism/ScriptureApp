@@ -39,46 +39,7 @@ final String TAG = "BookOfMormonQuiz";
         FactQuestion q8 = new FactQuestion("What did Alma teach to the people in Antionum?", "Book of mormon");
         q8.setAnswerChoices("To pray in their hearts", "Not to worship false idols", "To pray humbly", "To make a temple", 3);
         this.addQuestion(q1,q2,q3,q4,q5,q6,q7,q8);
-        loadProgress();
 
         currentQuestion = questions.peek();
-//        saveProgress();
-
-    }
-
-    @Override
-    public void saveProgress() {
-        mDatabase.child("Quiz").child("BOMQuiz").child("question").setValue(questionNumber);
-        Log.e("BOMQuiz","setting"+questionNumber);
-    }
-    public void loadProgress(){
-//        ValueEventListener vel=FirebaseDatabase.getInstance().getReference().child("Quiz").child("BOMQuiz").child("question").addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot snapshot) {
-//                Log.e(TAG,""+snapshot.getValue());  //prints "Do you have data? You'll love Firebase."
-//                questionNumber = Integer.parseInt(snapshot.getValue().toString());
-//            }
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//            }
-//        });
-//        for(int i = 1;i<questionNumber;i++)
-//        {
-//            deleteQuestion();
-//        }
-//        //questionNumber+=3;
-//        FirebaseDatabase.getInstance().getReference().removeEventListener(vel);
-
-    }
-
-    @Override
-    public void saveScore(int score) {
-        FirebaseDatabase.getInstance().getReference().child("Quiz").child("BOMQuiz").child("score").setValue(score);
-    }
-
-
-    @Override
-    public void loadScore() {
-        //print score from database
     }
 }

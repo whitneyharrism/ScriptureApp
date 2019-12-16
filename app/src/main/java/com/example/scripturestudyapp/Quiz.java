@@ -37,7 +37,6 @@ public abstract class Quiz {
      * @return
      */
     Question getQuestion(){
-        loadProgress();
         return questions.peek();
     }
 
@@ -88,15 +87,5 @@ public abstract class Quiz {
     public boolean testAnswer(String answer){
         return answer.equals(currentQuestion.correctAnswer);
     }
-
-
-
-
-    /**
-     * saves the quiz to the database
-     */
-    public abstract void saveProgress();
-    public abstract void loadProgress();
-
 
 }

@@ -123,24 +123,4 @@ public class AttributeQuiz extends ScaleQuiz {
         currentQuestion = questions.peek();
     }
 
-    @Override
-    public void saveProgress() {
-        mDatabase.child("Quiz").child("CAQuiz").child("question").setValue(questionNumber);
-        Log.e("AttributeQuiz","setting");
-    }
-
-    @Override
-    public void loadProgress() {
-
-    }
-
-    @Override
-    public void saveScore(int score) {
-        FirebaseDatabase.getInstance().getReference().child("CAQuiz").setValue(score);
-    }
-
-    @Override
-    public void loadScore() {
-
-    }
 }

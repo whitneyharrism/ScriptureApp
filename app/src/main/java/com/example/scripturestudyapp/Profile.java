@@ -59,27 +59,12 @@ public class Profile extends AppCompatActivity {
                 scoresBox.append("\n"+dataSnapshot.child("OTQuiz").child("score").getValue().toString());
                 scoresBox.append("\n"+dataSnapshot.child("NTQuiz").child("score").getValue().toString());
                 scoresBox.append("\n"+dataSnapshot.child("InvQuiz").child("score").getValue().toString());
-
+                goalDaysBox.setText(dataSnapshot.child("ReadingTracker").child("goalDays").getValue().toString());
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Log.w(TAG, "Failed to read value.");
-            }
-        });
-
-
-        //////////////////////////////////////Goals////////////////////////////////////////////////
-
-
-        goalDaysBox = findViewById(R.id.goalDaysBox);
-        goalDaysBox.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean b) {
-                if(b == false) {
-                    goalDays = Integer.parseInt(goalDaysBox.getText().toString());
-                    FirebaseDatabase.getInstance().getReference().child("ReadingTracker").child("GoalDays").setValue(goalDays);
-                }
             }
         });
     }
@@ -93,6 +78,9 @@ public class Profile extends AppCompatActivity {
     {
 
     }
-
+    public void saveNewGoal(View view){
+        goalDays = Integer.parseInt(goalDaysBox.getText().toString());
+        FirebaseDatabase.getInstance().getReference().child("ReadingTracker").child("GoalDays").setValue(goalDays);
+    }
 
 }

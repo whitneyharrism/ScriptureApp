@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 /**
@@ -79,12 +80,12 @@ public class QuizRunner extends AppCompatActivity implements View.OnClickListene
         super.onStart();
         if(getIntent().getStringExtra("quiz") != null)
             switch (getIntent().getStringExtra("quiz")){
-                case "bom": quiz = new BookOfMormonQuiz();break;
-                case "ca": quiz = new AttributeQuiz();break;
-                case "dc": quiz = new DCQuiz();break;
-                case "nt": quiz = new NewTestimentQuiz();break;
-                case "ot": quiz = new OldTestamentQuiz();break;
-                case "i": quiz = new investigatorQuiz();break;
+                case "BOMQuiz": quiz = new BookOfMormonQuiz();break;
+                case "CAQuiz": quiz = new AttributeQuiz();break;
+                case "DCQuiz": quiz = new DCQuiz();break;
+                case "NTQuiz": quiz = new NewTestimentQuiz();break;
+                case "OTQuiz": quiz = new OldTestamentQuiz();break;
+                case "InvQuiz": quiz = new investigatorQuiz();break;
                 default: Log.w(TAG,"Error with version of quiz. Should be bom, bt, ot, etc.");
             }
         else{System.out.println("failure");}
@@ -111,12 +112,16 @@ public class QuizRunner extends AppCompatActivity implements View.OnClickListene
             if(quiz.currentQuestion.scriptureReading != null)
             {
                 if(results == null)
-                results += "" + quiz.currentQuestion.scriptureReading;
+                results += "!" + quiz.currentQuestion.scriptureReading;
                 else
                     results += ", " + quiz.currentQuestion.scriptureReading;
             }
         }
-
+        FirebaseDatabase.getInstance().getReference().child("Quiz").child(getIntent().getStringExtra("quiz")).child("question").setValue(quiz.questionNumber);
+        Log.e("BOMQuiz","setting"+quiz.questionNumber);
+        //score into database
+        //FirebaseDatabase.getInstance().getReference().child("Quiz").child(getIntent().getStringExtra("quiz")).child("score").setValue(quiz.questionNumber);
+        //Log.e("BOMQuiz","setting"+quiz.questionNumber);
     }
 
     private void addFactScore(String topic) {
@@ -226,9 +231,23 @@ public class QuizRunner extends AppCompatActivity implements View.OnClickListene
         intent.putExtra("suggest reading", results);
         startActivity(intent);
     }
+    public void loadProgress(){
+//        ValueEventListener vel=FirebaseDatabase.getInstance().getReference().child("Quiz").child("BOMQuiz").child("question").addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot snapshot) {
+//                Log.e(TAG,""+snapshot.getValue());  //prints "Do you have data? You'll love Firebase."
+//                questionNumber = Integer.parseInt(snapshot.getValue().toString());
+//            }
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//            }
+//        });
+//        for(int i = 1;i<questionNumber;i++)
+//        {
+//            deleteQuestion();
+//        }
+//        //questionNumber+=3;
+//        FirebaseDatabase.getInstance().getReference().removeEventListener(vel);
 
-    public void save(View view){
-        //quiz.saveProgress();
-        //quiz.saveScore();
     }
 }

@@ -34,24 +34,4 @@ class NewTestimentQuiz extends FactQuiz {
         this.addQuestion(q1,q2,q3,q4,q5,q6,q7,q8);
         currentQuestion = questions.peek();
     }
-
-    @Override
-    public void saveProgress() {
-        mDatabase.child("Quiz").child("NTQuiz").child("question").setValue(questionNumber);
-    }
-
-    @Override
-    public void loadProgress() {
-
-    }
-
-    @Override
-    public void saveScore(int score) {
-
-    }
-
-    @Override
-    public void loadScore() {
-
-    }
 }

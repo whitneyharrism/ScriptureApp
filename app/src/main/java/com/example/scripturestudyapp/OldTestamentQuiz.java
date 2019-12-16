@@ -33,24 +33,4 @@ class OldTestamentQuiz extends FactQuiz {
         currentQuestion = questions.peek();
 
     }
-
-    @Override
-    public void saveProgress() {
-        mDatabase.child("Quiz").child("OTQuiz").child("question").setValue(questionNumber);
-    }
-
-    @Override
-    public void loadProgress() {
-
-    }
-
-    @Override
-    public void saveScore(int score) {
-
-    }
-
-    @Override
-    public void loadScore() {
-
-    }
 }

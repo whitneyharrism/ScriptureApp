@@ -54,22 +54,22 @@ public class QuizList extends AppCompatActivity implements View.OnClickListener 
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.bom:
-                goToQuiz("bom");
+                goToQuiz("BOMQuiz");
                 break;
             case R.id.ca:
-                goToQuiz("ca");
+                goToQuiz("CAQuiz");
                 break;
             case R.id.dc:
-                goToQuiz("dc");
+                goToQuiz("DCQuiz");
                 break;
             case R.id.nt:
-                goToQuiz("nt");
+                goToQuiz("NTQuiz");
                 break;
             case R.id.ot:
-                goToQuiz("ot");
+                goToQuiz("OTQuiz");
                 break;
             case R.id.i:
-                goToQuiz("i");
+                goToQuiz("InvQuiz");
                 break;
         }
     }

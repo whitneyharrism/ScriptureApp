@@ -27,41 +27,34 @@ public class LessonPage extends AppCompatActivity {
     private String note;
     private String link[];
     final String TAG = "LessonPage";
-    EditText commitment,message,notes;
-    TextView links;
+    EditText commitment,message,notes, title, linkWriter;
+    TextView myLinks;
     DatabaseReference LessonDatabase = FirebaseDatabase.getInstance().getReference().child("Lesson").child("LessonOne");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lesson_page);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "emailing students", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
         commitment = findViewById(R.id.commitmentBox);
         message = findViewById(R.id.messageBox);
         notes = findViewById(R.id.notesBox);
-        links = findViewById(R.id.linkWriter);
+        linkWriter = findViewById(R.id.linkWriter);
+        title = findViewById(R.id.titleBox);
+        myLinks = findViewById(R.id.myLinksBox);
         load();
     }
 
-    public void addLink(){}
+    public void addLink(View view){
+        myLinks.append(myLinks.getText());
+    }
 
     public void save(){
-
-
         LessonDatabase.child("commitment").setValue(commitment.getText().toString());
         LessonDatabase.child("message").setValue(message.getText().toString());
         LessonDatabase.child("notes").setValue(notes.getText().toString());
-        LessonDatabase.child("links").setValue(links.getText().toString());
+        LessonDatabase.child("links").setValue(myLinks.getText().toString());
+        LessonDatabase.child("title").setValue(title.getText().toString());
     }
     public void load(){
         LessonDatabase.addValueEventListener(new ValueEventListener() {
@@ -70,7 +63,8 @@ public class LessonPage extends AppCompatActivity {
                 commitment.setText(dataSnapshot.child("commitment").getValue().toString());
                 message.setText(dataSnapshot.child("message").getValue().toString());
                 notes.setText(dataSnapshot.child("notes").getValue().toString());
-                links.setText(dataSnapshot.child("links").getValue().toString());
+                myLinks.setText(dataSnapshot.child("links").getValue().toString());
+                title.setText(dataSnapshot.child("title").getValue().toString());
 
             }
             @Override

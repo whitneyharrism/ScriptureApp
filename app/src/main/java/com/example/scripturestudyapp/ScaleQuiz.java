@@ -12,10 +12,4 @@ abstract class ScaleQuiz extends Quiz{
             questions.add(q[i]);
         }
     }
-
-    @Override
-    public abstract void saveProgress();
-    public abstract void loadProgress();
-    public abstract void saveScore(int score);
-    public abstract void loadScore();
 }
