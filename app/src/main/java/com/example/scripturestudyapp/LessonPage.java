@@ -46,7 +46,8 @@ public class LessonPage extends AppCompatActivity {
     }
 
     public void addLink(View view){
-        myLinks.append(myLinks.getText());
+        myLinks.append(linkWriter.getText()+"\n");
+        linkWriter.setText("");
     }
 
     public void save(){

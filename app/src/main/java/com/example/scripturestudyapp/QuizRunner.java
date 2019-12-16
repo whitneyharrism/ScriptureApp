@@ -113,7 +113,7 @@ public class QuizRunner extends AppCompatActivity implements View.OnClickListene
             if(quiz.currentQuestion.scriptureReading != null)
             {
                 if(results == null)
-                results += "!" + quiz.currentQuestion.scriptureReading;
+                results += ": " + quiz.currentQuestion.scriptureReading;
                 else
                     results += ", " + quiz.currentQuestion.scriptureReading;
             }
