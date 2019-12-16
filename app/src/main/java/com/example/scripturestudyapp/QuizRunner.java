@@ -120,23 +120,32 @@ public class QuizRunner extends AppCompatActivity implements View.OnClickListene
         }
 
         //score into database
-        //FirebaseDatabase.getInstance().getReference().child("Quiz").child(getIntent().getStringExtra("quiz")).child("score").setValue(quiz.questionNumber);
-        //Log.e("BOMQuiz","setting"+quiz.questionNumber);
+
     }
 
     private void addFactScore(String topic) {
         switch (topic)
         {
             case "Book of mormon":
-                bom+=4;break;
+                bom+=4;
+                FirebaseDatabase.getInstance().getReference().child("Quiz").child(getIntent().getStringExtra("quiz")).child("score").setValue(bom);
+                break;
             case "dc":
-                dc+=4;break;
+                dc+=4;
+                FirebaseDatabase.getInstance().getReference().child("Quiz").child(getIntent().getStringExtra("quiz")).child("score").setValue(dc);
+                break;
             case "nt":
-                nt+=4;break;
+                nt+=4;
+                FirebaseDatabase.getInstance().getReference().child("Quiz").child(getIntent().getStringExtra("quiz")).child("score").setValue(nt);
+                break;
             case "ot":
-                ot+=4;break;
+                ot+=4;
+                FirebaseDatabase.getInstance().getReference().child("Quiz").child(getIntent().getStringExtra("quiz")).child("score").setValue(ot);
+                break;
             case "investigator":
-                i+=4;break;
+                i+=4;
+                FirebaseDatabase.getInstance().getReference().child("Quiz").child(getIntent().getStringExtra("quiz")).child("score").setValue(i);
+                break;
             default:
                 System.out.println("Topic is not archived or is misspelled.");
         }
@@ -253,12 +262,6 @@ public class QuizRunner extends AppCompatActivity implements View.OnClickListene
             public void onCancelled(DatabaseError databaseError) {
             }
         });
-
-        //questionNumber+=3;
-
-
-
-
     }
 
     public void saveQuestion(){
