@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
@@ -92,8 +93,8 @@ public class QuizRunner extends AppCompatActivity implements View.OnClickListene
         if(quiz.getSize() <= 0) Log.e(TAG, "Quiz size is 0. Quiz needs to reset size.");
         else Log.i(TAG, "Quiz size: "+quiz.getSize());
 
+        loadProgress();
 
-        display();
     }
 
     /**
@@ -117,8 +118,7 @@ public class QuizRunner extends AppCompatActivity implements View.OnClickListene
                     results += ", " + quiz.currentQuestion.scriptureReading;
             }
         }
-        FirebaseDatabase.getInstance().getReference().child("Quiz").child(getIntent().getStringExtra("quiz")).child("question").setValue(quiz.questionNumber);
-        Log.e("BOMQuiz","setting"+quiz.questionNumber);
+
         //score into database
         //FirebaseDatabase.getInstance().getReference().child("Quiz").child(getIntent().getStringExtra("quiz")).child("score").setValue(quiz.questionNumber);
         //Log.e("BOMQuiz","setting"+quiz.questionNumber);
@@ -179,32 +179,29 @@ public class QuizRunner extends AppCompatActivity implements View.OnClickListene
             case R.id.btn_one:
                 addScore(quiz.getTopic(),1);
                 displayToast(1);
-                quiz.NextQuestion();
-                display();
                 break;
 
             case R.id.btn_two:
                 addScore(quiz.getTopic(),2);
                 displayToast(2);
-                quiz.NextQuestion();
-                display();
                 break;
 
             case R.id.btn_three:
                 addScore(quiz.getTopic(),3);
                 displayToast(3);
-                quiz.NextQuestion();
-                display();
                 break;
 
             case R.id.btn_four:
                 addScore(quiz.getTopic(),4);
                 displayToast(4);
-                quiz.NextQuestion();
-                display();
                 break;
         }
         if(quiz.getSize() <= 0) {quiz.questionNumber = 0;openResultsPage();}
+        if(v.getId() == R.id.btn_one ||v.getId() == R.id.btn_two ||v.getId() == R.id.btn_three ||v.getId() == R.id.btn_four) {
+            quiz.NextQuestion();
+            saveQuestion();
+            display();
+        }
     }
 
     private void display() {
@@ -226,28 +223,46 @@ public class QuizRunner extends AppCompatActivity implements View.OnClickListene
      */
     private void openResultsPage() {
         //do intent to switch page
+        quiz.questionNumber = 0;
+        saveQuestion();
         Intent intent = new Intent(this, QuizResults.class);
         intent.putExtra("quiz",getIntent().getStringExtra("quiz"));
         intent.putExtra("suggest reading", results);
         startActivity(intent);
     }
-    public void loadProgress(){
-//        ValueEventListener vel=FirebaseDatabase.getInstance().getReference().child("Quiz").child("BOMQuiz").child("question").addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot snapshot) {
-//                Log.e(TAG,""+snapshot.getValue());  //prints "Do you have data? You'll love Firebase."
-//                questionNumber = Integer.parseInt(snapshot.getValue().toString());
-//            }
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//            }
-//        });
-//        for(int i = 1;i<questionNumber;i++)
-//        {
-//            deleteQuestion();
-//        }
-//        //questionNumber+=3;
-//        FirebaseDatabase.getInstance().getReference().removeEventListener(vel);
+    public void loadProgress() {
+        final DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Quiz").child("BOMQuiz").child("question");
+        ValueEventListener vel=ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                Log.e(TAG,"database question is: "+snapshot.getValue());  //prints "Do you have data? You'll love Firebase."
+                quiz.questionNumber = Integer.parseInt(snapshot.getValue().toString());
+                Log.e(TAG,"question is: "+quiz.questionNumber);
+                for(int i = 1;i<quiz.questionNumber;i++)
+                {
+                    quiz.deleteQuestion();
+                    quiz.currentQuestion = quiz.getQuestion();
+                    Log.e(TAG,"question: "+quiz.currentQuestion.question);
 
+                }
+
+                display();
+                ref.removeEventListener(this);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+
+        //questionNumber+=3;
+
+
+
+
+    }
+
+    public void saveQuestion(){
+        FirebaseDatabase.getInstance().getReference().child("Quiz").child(getIntent().getStringExtra("quiz")).child("question").setValue(quiz.questionNumber);
+        Log.e("BOMQuiz","setting"+quiz.questionNumber);
     }
 }
