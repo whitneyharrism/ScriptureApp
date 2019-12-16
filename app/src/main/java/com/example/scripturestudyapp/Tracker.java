@@ -69,7 +69,7 @@ public class Tracker extends AppCompatActivity {
 
                 //++day;
 
-                if(day <= goalDays)
+                if(day < goalDays)
                 btn.setText("Day "+day);
                 else
                 {btn.setEnabled(false);btn.setText("Reading goal met");}
@@ -83,13 +83,14 @@ public class Tracker extends AppCompatActivity {
         double temp2 = (1.0/temp1)*100.0;
         percentRead = (int)temp2;
 
-        if(day == goalDays) prg.setProgress(100);
+
         prg.incrementProgressBy(Math.round(percentRead));
         int percent = prg.getProgress();
         percentText.setText(percent+"%");
         FirebaseDatabase.getInstance().getReference().child("ReadingTracker").child("percentage").setValue(percent);
         double temp3 = Math.round(((double)percent/100.0)*goalDays);
         day = (int)temp3;
-        Log.e("thing",""+day);
+        if(day == goalDays) {prg.setProgress(100);Log.e("thing","set 100");}
+        Log.e("thing",""+day + " " + goalDays);
     }
 }
