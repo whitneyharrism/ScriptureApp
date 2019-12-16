@@ -22,8 +22,6 @@ import com.google.firebase.database.ValueEventListener;
  * Activity were you will see and set your notifications
  */
 public class Profile extends AppCompatActivity {
-    String userName;
-    String password;
     //notification
     int goalDays;
     int goalPercComplete;
@@ -46,22 +44,33 @@ public class Profile extends AppCompatActivity {
         ///////////////////////////////////////////////////////////Scores//////////////////////////////
         scoresBox = findViewById(R.id.bookOfMormonBox);
         //bookOfMormonScore.setText(FirebaseDatabase.getInstance().getReference().child("Quiz").child("BOMQuiz").child("score").getValue());
-        DatabaseReference BOMDatabase = FirebaseDatabase.getInstance().getReference().child("Quiz");
-        BOMDatabase.addValueEventListener(new ValueEventListener() {
+        DatabaseReference scoreDatabase = FirebaseDatabase.getInstance().getReference().child("Quiz");
+        DatabaseReference readingTrackDatabase = FirebaseDatabase.getInstance().getReference().child("ReadingTracker");
+        scoreDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                //bookOfMormonScore = (TextView) dataSnapshot.getValue();
                 String BOMScore = dataSnapshot.child("BOMQuiz").child("score").getValue().toString();
-                //Toast.makeText(Profile.this,BOMScore,Toast.LENGTH_SHORT).show();
-                Log.w(TAG, dataSnapshot.child("CAQuiz").child("score").getValue().toString());
                 scoresBox.setText(BOMScore);
                 scoresBox.append("\n"+dataSnapshot.child("CAQuiz").child("score").getValue().toString());
                 scoresBox.append("\n"+dataSnapshot.child("OTQuiz").child("score").getValue().toString());
                 scoresBox.append("\n"+dataSnapshot.child("NTQuiz").child("score").getValue().toString());
                 scoresBox.append("\n"+dataSnapshot.child("InvQuiz").child("score").getValue().toString());
-                goalDaysBox.setText(dataSnapshot.child("ReadingTracker").child("goalDays").getValue().toString());
+
             }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.w(TAG, "Failed to read value.");
+            }
+        });
+
+        ////////////////////////////Goal Day///////////////////////////////////////////////
+        readingTrackDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                goalDaysBox = findViewById(R.id.goalDaysBox);
+                goalDaysBox.setText(" "+dataSnapshot.child("GoalDays").getValue());
+            }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Log.w(TAG, "Failed to read value.");
@@ -79,6 +88,7 @@ public class Profile extends AppCompatActivity {
 
     }
     public void saveNewGoal(View view){
+        goalDaysBox = findViewById(R.id.goalDaysBox);
         goalDays = Integer.parseInt(goalDaysBox.getText().toString());
         FirebaseDatabase.getInstance().getReference().child("ReadingTracker").child("GoalDays").setValue(goalDays);
     }
