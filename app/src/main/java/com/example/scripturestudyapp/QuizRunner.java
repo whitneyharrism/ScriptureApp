@@ -130,19 +130,19 @@ public class QuizRunner extends AppCompatActivity implements View.OnClickListene
                 bom+=4;
                 FirebaseDatabase.getInstance().getReference().child("Quiz").child(getIntent().getStringExtra("quiz")).child("score").setValue(bom);
                 break;
-            case "dc":
+            case "DC":
                 dc+=4;
                 FirebaseDatabase.getInstance().getReference().child("Quiz").child(getIntent().getStringExtra("quiz")).child("score").setValue(dc);
                 break;
-            case "nt":
+            case "New Testament":
                 nt+=4;
                 FirebaseDatabase.getInstance().getReference().child("Quiz").child(getIntent().getStringExtra("quiz")).child("score").setValue(nt);
                 break;
-            case "ot":
+            case "Old Testament":
                 ot+=4;
                 FirebaseDatabase.getInstance().getReference().child("Quiz").child(getIntent().getStringExtra("quiz")).child("score").setValue(ot);
                 break;
-            case "investigator":
+            case "Investigator":
                 i+=4;
                 FirebaseDatabase.getInstance().getReference().child("Quiz").child(getIntent().getStringExtra("quiz")).child("score").setValue(i);
                 break;
@@ -242,7 +242,7 @@ public class QuizRunner extends AppCompatActivity implements View.OnClickListene
         startActivity(intent);
     }
     public void loadProgress() {
-        final DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Quiz").child("BOMQuiz").child("question");
+        final DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Quiz").child(getIntent().getStringExtra("quiz")).child("question");
         ValueEventListener vel=ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
@@ -268,6 +268,5 @@ public class QuizRunner extends AppCompatActivity implements View.OnClickListene
 
     public void saveQuestion(){
         FirebaseDatabase.getInstance().getReference().child("Quiz").child(getIntent().getStringExtra("quiz")).child("question").setValue(quiz.questionNumber);
-        Log.e("BOMQuiz","setting"+quiz.questionNumber);
     }
 }
