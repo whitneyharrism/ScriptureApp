@@ -3,6 +3,7 @@ package com.example.scripturestudyapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -69,7 +70,10 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 goalDaysBox = findViewById(R.id.goalDaysBox);
-                goalDaysBox.setText(" "+dataSnapshot.child("GoalDays").getValue());
+                goalDaysBox.setText(""+dataSnapshot.child("GoalDays").getValue());
+                double temp1 = goalDays;
+                double temp2 = (1.0/temp1)*100.0;
+                FirebaseDatabase.getInstance().getReference().child("ReadingTracker").child("percentage").setValue((int)temp2);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -91,6 +95,11 @@ public class Profile extends AppCompatActivity {
         goalDaysBox = findViewById(R.id.goalDaysBox);
         goalDays = Integer.parseInt(goalDaysBox.getText().toString());
         FirebaseDatabase.getInstance().getReference().child("ReadingTracker").child("GoalDays").setValue(goalDays);
+    }
+    public void logOut(View view){
+        FirebaseAuth.getInstance().signOut();
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
     }
 
 }

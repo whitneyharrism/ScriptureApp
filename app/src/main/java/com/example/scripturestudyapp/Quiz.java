@@ -18,6 +18,7 @@ public abstract class Quiz {
     protected Queue<Question> questions = new LinkedList<>();
     protected Question currentQuestion;
     public int questionNumber;
+    public int score;
     protected DatabaseReference mDatabase;
 // ...
 

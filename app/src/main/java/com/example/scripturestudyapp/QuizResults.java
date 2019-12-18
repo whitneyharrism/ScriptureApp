@@ -31,10 +31,10 @@ public class QuizResults extends AppCompatActivity {
         displayTopicText("diligence", QuizRunner.diligence);
         displayTopicText("obedience", QuizRunner.obedience);
         displayTopicText("Book of Mormon", QuizRunner.bom);
-        displayTopicText("New Testiment", QuizRunner.obedience);
-        displayTopicText("Old Testiment", QuizRunner.obedience);
-        displayTopicText("Doctrine and covenants", QuizRunner.obedience);
-        displayTopicText("investigator", QuizRunner.obedience);
+        displayTopicText("New Testiment", QuizRunner.nt);
+        displayTopicText("Old Testiment", QuizRunner.ot);
+        displayTopicText("Doctrine and covenants", QuizRunner.dc);
+        displayTopicText("investigator", QuizRunner.i);
         suggestedReading();
     }
 

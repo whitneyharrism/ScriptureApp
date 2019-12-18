@@ -48,15 +48,15 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
 
-//                FirebaseUser mFirebaseUser = mFirebaseAuth.getCurrentUser();
-//                if( mFirebaseUser != null){
-//                    Toast.makeText(LoginActivity.this,"You are logged in",Toast.LENGTH_SHORT).show();
-//                    Intent i = new Intent(LoginActivity.this, MainPage.class);
-//                    startActivity(i);
-//                }
-//                else{
-//                    Toast.makeText(LoginActivity.this,"Please Login",Toast.LENGTH_SHORT).show();
-//                }
+                FirebaseUser mFirebaseUser = mFirebaseAuth.getCurrentUser();
+                if( mFirebaseUser != null){
+                    Toast.makeText(LoginActivity.this,"You are logged in",Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(LoginActivity.this, MainPage.class);
+                    startActivity(i);
+                }
+                else{
+                    Toast.makeText(LoginActivity.this,"Please Login",Toast.LENGTH_SHORT).show();
+                }
             }
         };
 

@@ -129,6 +129,7 @@ public class QuizRunner extends AppCompatActivity implements View.OnClickListene
             case "Book of mormon":
                 bom+=4;
                 FirebaseDatabase.getInstance().getReference().child("Quiz").child(getIntent().getStringExtra("quiz")).child("score").setValue(bom);
+                //setScore(FirebaseDatabase.getInstance().getReference().child("Quiz").child(getIntent().getStringExtra("quiz")).child("score"));
                 break;
             case "DC":
                 dc+=4;
@@ -212,7 +213,7 @@ public class QuizRunner extends AppCompatActivity implements View.OnClickListene
             saveQuestion();
             display();
         }
-        Log.e("qr", ""+quiz.getSize());
+        //Log.e("qr", ""+quiz.getSize());
     }
 
     private void display() {
@@ -246,14 +247,14 @@ public class QuizRunner extends AppCompatActivity implements View.OnClickListene
         ValueEventListener vel=ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                Log.e(TAG,"database question is: "+snapshot.getValue());  //prints "Do you have data? You'll love Firebase."
+                //Log.e(TAG,"database question is: "+snapshot.getValue());  //prints "Do you have data? You'll love Firebase."
                 quiz.questionNumber = Integer.parseInt(snapshot.getValue().toString());
-                Log.e(TAG,"question is: "+quiz.questionNumber);
+                //Log.e(TAG,"question is: "+quiz.questionNumber);
                 for(int i = 1;i<quiz.questionNumber;i++)
                 {
                     quiz.deleteQuestion();
                     quiz.currentQuestion = quiz.getQuestion();
-                    Log.e(TAG,"question: "+quiz.currentQuestion.question);
+                    //Log.e(TAG,"question: "+quiz.currentQuestion.question);
 
                 }
 
@@ -269,4 +270,17 @@ public class QuizRunner extends AppCompatActivity implements View.OnClickListene
     public void saveQuestion(){
         FirebaseDatabase.getInstance().getReference().child("Quiz").child(getIntent().getStringExtra("quiz")).child("question").setValue(quiz.questionNumber);
     }
+//    public void setScore(DatabaseReference d){
+//        ValueEventListener vel=ref.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot snapshot) {
+//
+//            }
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//            }
+//        });
+//        }
+//    }
+
 }

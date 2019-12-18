@@ -58,7 +58,15 @@ public class Tracker extends AppCompatActivity {
                 percentRead = Integer.parseInt(dataSnapshot.child("ReadingTracker").child("percentage").getValue().toString());
                 percentReadText.setText(dataSnapshot.child("ReadingTracker").child("percentage").getValue().toString()+"%");
                 lastReadMonth = Integer.parseInt(dataSnapshot.child("ReadingTracker").child("lastReadMonth").getValue().toString());
+                //Check if new month
+                if(currentDate.getMonth() != lastReadMonth) {
+                    Log.e("test",""+currentDate.getMonth() + " " + lastReadMonth);
+                    prg.setProgress(0);
+                    FirebaseDatabase.getInstance().getReference().child("ReadingTracker").child("month").setValue(currentDate.getMonth());
+                    FirebaseDatabase.getInstance().getReference().child("ReadingTracker").child("percentage").setValue(0);
+                }
                 lastReadDay = Integer.parseInt(dataSnapshot.child("ReadingTracker").child("lastReadDay").getValue().toString());
+                //Check if new day
                 if(getDay(prg) < goalDays && currentDate.getDay() != lastReadDay)
                 {btn.setText("Day "+getDay(prg));}
                 else if(currentDate.getDay() == lastReadDay)
@@ -70,24 +78,10 @@ public class Tracker extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
-
-        //Check if new month
-//        date = new Date();
-//        if(date.getMonth() != lastReadMonth) {
-//            prg.setProgress(0);
-//            FirebaseDatabase.getInstance().getReference().child("ReadingTracker").child("month").setValue(date.getMonth());
-//            FirebaseDatabase.getInstance().getReference().child("ReadingTracker").child("percentage").setValue(0);
-//        }
-
-
-
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-
-
-                //++day;
 Log.e("latest", "last: "+lastReadDay + " " + currentDate.getDay());
                 if(day < goalDays && currentDate.getDay() != lastReadDay)
                     {changeProgress(prg, percentReadText);btn.setText("Day "+getDay(prg));}
