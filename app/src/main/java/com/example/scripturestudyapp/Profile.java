@@ -51,7 +51,7 @@ public class Profile extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String BOMScore = dataSnapshot.child("BOMQuiz").child("score").getValue().toString();
                 scoresBox.setText(BOMScore);
-                scoresBox.append("\n"+dataSnapshot.child("CAQuiz").child("score").getValue().toString());
+                scoresBox.append("\n"+dataSnapshot.child("DCQuiz").child("score").getValue().toString());
                 scoresBox.append("\n"+dataSnapshot.child("OTQuiz").child("score").getValue().toString());
                 scoresBox.append("\n"+dataSnapshot.child("NTQuiz").child("score").getValue().toString());
                 scoresBox.append("\n"+dataSnapshot.child("InvQuiz").child("score").getValue().toString());

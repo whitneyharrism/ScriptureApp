@@ -124,11 +124,11 @@
 
     <TextView
         android:id="@+id/textView15"
-        android:layout_width="176dp"
-        android:layout_height="119dp"
+        android:layout_width="207dp"
+        android:layout_height="90dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="60dp"
-        android:text="Book Of Mormon:\nChristlike Attributes:\nOld Testiment:\nNew Testiment\nInvestigator Quiz:"
+        android:text="Book Of Mormon:\nDOctrine and Covenants Quiz:\nOld Testiment:\nNew Testiment\nInvestigator Quiz:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView13" />
 

@@ -205,12 +205,14 @@ public class QuizRunner extends AppCompatActivity implements View.OnClickListene
                 displayToast(4);
                 break;
         }
-        if(quiz.getSize() <= 0) {quiz.questionNumber = 0;openResultsPage();}
+
         if(v.getId() == R.id.btn_one ||v.getId() == R.id.btn_two ||v.getId() == R.id.btn_three ||v.getId() == R.id.btn_four) {
             quiz.NextQuestion();
+            if(quiz.getSize() <= 0) {quiz.questionNumber = 0;openResultsPage();}
             saveQuestion();
             display();
         }
+        Log.e("qr", ""+quiz.getSize());
     }
 
     private void display() {
