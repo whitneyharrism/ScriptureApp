@@ -28,17 +28,27 @@ public class Tracker extends AppCompatActivity {
     int goalDays;
     int lastReadMonth;
     int lastReadDay;
-    Date date;
+
+    Button btn;
+    TextView goal;
+    TextView percentReadText;
+    ProgressBar prg;
+    Date currentDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tracker);
-        final Button btn = findViewById(R.id.button2);
-        final TextView goal = findViewById(R.id.goal);
-        final TextView percentReadText = findViewById(R.id.textView2);
-        final ProgressBar prg = findViewById(R.id.progressBar);
 
+        //find views
+        btn =findViewById(R.id.button2);
+        goal = findViewById(R.id.goal);
+        percentReadText = findViewById(R.id.textView2);
+        prg = findViewById(R.id.progressBar);
+        currentDate = new Date();
+
+
+        //Get current data from database for initial display
         FirebaseDatabase.getInstance().getReference().addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot){
@@ -49,6 +59,12 @@ public class Tracker extends AppCompatActivity {
                 percentReadText.setText(dataSnapshot.child("ReadingTracker").child("percentage").getValue().toString()+"%");
                 lastReadMonth = Integer.parseInt(dataSnapshot.child("ReadingTracker").child("lastReadMonth").getValue().toString());
                 lastReadDay = Integer.parseInt(dataSnapshot.child("ReadingTracker").child("lastReadDay").getValue().toString());
+                if(getDay(prg) < goalDays && currentDate.getDay() != lastReadDay)
+                {btn.setText("Day "+getDay(prg));}
+                else if(currentDate.getDay() == lastReadDay)
+                { btn.setEnabled(false);btn.setText("Marked as read today"); }
+                else
+                {btn.setEnabled(false);btn.setText("Reading goal met");}
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -56,14 +72,14 @@ public class Tracker extends AppCompatActivity {
         });
 
         //Check if new month
-        date = new Date();
-        if(date.getMonth() != lastReadMonth) {
-            prg.setProgress(0);
-            FirebaseDatabase.getInstance().getReference()/*.child(FirebaseAuth.getInstance().getCurrentUser().getUid())*/.child("ReadingTracker").child("month").setValue(date.getMonth());
-        }
+//        date = new Date();
+//        if(date.getMonth() != lastReadMonth) {
+//            prg.setProgress(0);
+//            FirebaseDatabase.getInstance().getReference().child("ReadingTracker").child("month").setValue(date.getMonth());
+//            FirebaseDatabase.getInstance().getReference().child("ReadingTracker").child("percentage").setValue(0);
+//        }
 
 
-       btn.setText("Day "+ day);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,33 +88,39 @@ public class Tracker extends AppCompatActivity {
 
 
                 //++day;
-
-                if(day < goalDays && date.getDay() != lastReadDay)
-                {changeProgress(prg, percentReadText);btn.setText("Day "+day);}
-                else if(date.getDay() == lastReadDay)
-                {
-                    btn.setEnabled(false);btn.setText("Marked as read today");
-                }
+Log.e("latest", "last: "+lastReadDay + " " + currentDate.getDay());
+                if(day < goalDays && currentDate.getDay() != lastReadDay)
+                    {changeProgress(prg, percentReadText);btn.setText("Day "+getDay(prg));}
+                else if(currentDate.getDay() == lastReadDay)
+                    { btn.setEnabled(false);btn.setText("Marked as read today"); }
                 else
-                {btn.setEnabled(false);btn.setText("Reading goal met");}
+                    {btn.setEnabled(false);btn.setText("Reading goal met");}
             }
         });
         day = 1;
     }
 
     public void changeProgress(ProgressBar prg, TextView percentText){
+        //set increment value
         double temp1 = goalDays;
         double temp2 = (1.0/temp1)*100.0;
         percentRead = (int)temp2;
 
-
         prg.incrementProgressBy(Math.round(percentRead));
-        int percent = prg.getProgress();
-        percentText.setText(percent+"%");
-        FirebaseDatabase.getInstance().getReference().child("ReadingTracker").child("percentage").setValue(percent);
-        double temp3 = Math.round(((double)percent/100.0)*goalDays);
-        day = (int)temp3;
-        if(day == goalDays) {prg.setProgress(100);Log.e("thing","set 100");}
-        Log.e("thing",""+day + " " + goalDays);
+
+        //set percentageBox text
+        percentText.setText(prg.getProgress()+"%");
+        FirebaseDatabase.getInstance().getReference().child("ReadingTracker").child("percentage").setValue(prg.getProgress());
+        FirebaseDatabase.getInstance().getReference().child("ReadingTracker").child("lastReadDay").setValue(currentDate.getDay());
+        FirebaseDatabase.getInstance().getReference().child("ReadingTracker").child("lastReadMonth").setValue(currentDate.getMonth());
+
+        //set goalButton text
+
+        if(getDay(prg) == goalDays) {prg.setProgress(100);Log.e("thing","set 100");}
+        //Log.e("thing",""+day + " " + goalDays);
+    }
+    public int getDay(ProgressBar prg){
+        //Log.e("tracker", ""+(double)prg.getProgress());
+        return (int)Math.round(((double)prg.getProgress()/100.0)*goalDays);
     }
 }
