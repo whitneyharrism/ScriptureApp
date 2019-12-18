@@ -99,7 +99,7 @@ Log.e("latest", "last: "+lastReadDay + " " + currentDate.getDay());
         double temp1 = goalDays;
         double temp2 = (1.0/temp1)*100.0;
         percentRead = (int)temp2;
-
+Log.e("th", ""+percentRead);
         prg.incrementProgressBy(Math.round(percentRead));
 
         //set percentageBox text

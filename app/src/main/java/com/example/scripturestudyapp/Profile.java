@@ -71,9 +71,12 @@ public class Profile extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 goalDaysBox = findViewById(R.id.goalDaysBox);
                 goalDaysBox.setText(""+dataSnapshot.child("GoalDays").getValue());
-                double temp1 = goalDays;
+                double temp1 = Integer.parseInt(dataSnapshot.child("GoalDays").getValue().toString());
+                Log.e("e", ""+goalDays);
                 double temp2 = (1.0/temp1)*100.0;
-                FirebaseDatabase.getInstance().getReference().child("ReadingTracker").child("percentage").setValue((int)temp2);
+                int percentRead = (int)temp2;
+                Log.e("e", ""+percentRead);
+                FirebaseDatabase.getInstance().getReference().child("ReadingTracker").child("percentage").setValue(percentRead);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
