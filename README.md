@@ -4,7 +4,7 @@ This app allows the user to...
 * Set goals to read _ times a month and record
 * Plan a lesson
 
-###Authors
+### Authors
 * Caden Bird
 * Cody Lillywhite
 * Whitney Harris
